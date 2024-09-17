@@ -1,7 +1,9 @@
 # ampliconTraits
 
-ampliconTraits is a trait sequence database and a workflow to classify environmental ASVs. It uses a phenotypic trait database (Madin et al. 2020) with sequences from the SILVA SSU Ref v138 database. Trait databases are available with sequences for the V3-V4 region (341F - 806R) from the bacterial 16S RNA gene. ampliconTraits uses SINAPS (Edgar 2017) to classify environmental ASVs. See [Make your own databases](#make-your-own-databases)
+ampliconTraits is a trait sequence database and a workflow to classify environmental ASVs. It uses a phenotypic trait database (Madin et al. 2020) with sequences from the SILVA SSU Ref v138 database. Trait databases are available for the V3-V4 region (341F - 806R) from the prokaryotic 16S rRNA gene. ampliconTraits uses SINAPS (Edgar 2017) to classify environmental ASVs. See [Make your own databases](#make-your-own-databases)
 for creation of customized trait sequence databases, e.g databases for a different region of the 16S rRNA gene. Currently available traits are: d1_lo (cell diameter, lower), d1_up (cell diameter, upper) , d2_lo (cell length, lower), d2_up (cell length, upper), doubling_h (doubling time), genome_size, optimum_pH, optimum_tmp, rRNA16S_genes (16S rRNA gene copy number), metabolism (oxygen preference), motility, salinity_range (salinity preference) and sporulation. 
+
+Check out the paper: https://doi.org/10.1016/j.ecoinf.2024.102817
 
 For questions please contact: jdonhauser93@gmail.com
 
@@ -9,7 +11,7 @@ For questions please contact: jdonhauser93@gmail.com
 Download the databases
 
 ```
-wget https://erda.ku.dk/archives/f5d4b1d41f74ba3d6f73b212dbb11591/ampliconTraits/traitDatabases.tar
+wget https://erda.ku.dk/archives/f5d4b1d41f74ba3d6f73b212dbb11591/traitDatabases.tar
 ```
 The trait databases are called `trait.fasta`. For continuous traits, annotations have been binned into discrete intervals to enable classification. The number after the trait name in the file name indicates the number of equally sized intervals, the trait was binned into. E.g. `genome_size10.fasta` contains genome size annotations, obtained from binning the whole range of genome sizes into 10 intervals. For 16S rRNA gene copy number, moreover exact copy numbers are available. We tested interval numbers between 5 and 30 for most traits, resulting in similar accuracy. The choice of interval number is a trade-off between the precision and the confidence of a classification. If the number of intervals is too low, differences in the trait composition of environmental samples may not be resolved. The best choice may depend on the dataset. From our experience we recommend:
 * d1_lo: 20 - 30 intervals
@@ -231,6 +233,8 @@ TCGAGAATCTTTCGCAATGGACGAAAGTCTGACGAAGCGACGCCGCGTGTGTGATGAAGG
 ```
 
 ## References
+Donhauser, J., Doménech-Pascual, A., Han, X., Jordaan, K., Ramond, J.-B., Frossard, A., Romaní, A.M., Priemé, A., 2024. Modelling soil prokaryotic traits across environments with the trait sequence database *ampliconTraits* and the R package *MicEnvMod*. Ecological Informatics 83, 102817. doi:10.1016/j.ecoinf.2024.102817
+
 Edgar, R. C. (2017). SINAPS: Prediction of microbial traits from marker gene sequences (p. 124156). bioRxiv. https://doi.org/10.1101/124156
 
 Ii, M. S. R., O’Rourke, D. R., Kaehler, B. D., Ziemski, M., Dillon, M. R., Foster, J. T., & Bokulich, N. A. (2021). RESCRIPt: Reproducible sequence taxonomy reference database management. PLOS Computational Biology, 17(11), e1009581. https://doi.org/10.1371/journal.pcbi.1009581
